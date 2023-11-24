@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "899432780815",
+    "firebase_url": "https://check-list-app-d0a37-default-rtdb.firebaseio.com",
+    "project_id": "check-list-app-d0a37",
+    "storage_bucket": "check-list-app-d0a37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899432780815:android:d64a8998836b48be243f7a",
+        "android_client_info": {
+          "package_name": "com.example.checklist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVATtXeiEtDk7LsRNuliZz2pSiilEZHK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
