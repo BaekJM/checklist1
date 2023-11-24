@@ -82,13 +82,17 @@ Widget ServePageParch(Function()? onTap, QueryDocumentSnapshot doc) {
 ///Write
 
 class ServePageWrite extends StatefulWidget {
-  const ServePageWrite({Key? key}) : super(key: key);
+  ServePageWrite(this.data,{Key? key}) : super(key: key);
+
+  final String data;
 
   @override
   State<ServePageWrite> createState() => _ServePageWriteState();
 }
 
 class _ServePageWriteState extends State<ServePageWrite> {
+
+
   String date = DateTime.now().toString();
 
   ///아마 시간대 불러오는 코드인듯
@@ -174,7 +178,7 @@ class _ServePageWriteState extends State<ServePageWrite> {
         backgroundColor: Colors.cyan,
         onPressed: () async {
           FirebaseFirestore.instance
-              .collection("ServePage")
+              .collection(widget.data)
               .doc(_titleController.text)
               .set({
             Title: _titleController.text,

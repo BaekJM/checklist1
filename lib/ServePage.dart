@@ -26,14 +26,27 @@ class _ServePageState extends State<ServePage> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _mainController =
-        TextEditingController(text: widget.doc[content]);
+
+    String data = widget.doc[Title];
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Container(height: 30, child: Image.asset('poto/logo3.png')),
         backgroundColor: Colors.white,
         elevation: 0.0,
+        actions: [
+          IconButton(onPressed: () async {
+                  FirebaseFirestore.instance
+                      .collection("FirstPage")
+                      .doc(widget.doc[Title])
+                      .delete()
+                      .then((value) {
+                    Navigator.pop(context);
+                  }).catchError((error) => print('뭔가 잘못됬어 삭제를 못하잖아 이유를 찾아봐'));
+                },
+              icon: Icon(Icons.delete))
+        ],
       ),
       body: Column(
         children: [
@@ -194,7 +207,7 @@ class _ServePageState extends State<ServePage> {
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection("ServePage")
+                  .collection(widget.doc[Title])
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -220,24 +233,19 @@ class _ServePageState extends State<ServePage> {
           ),
         ],
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FittedBox(
+      floatingActionButton: FittedBox(
             child: FloatingActionButton(
               backgroundColor: Colors.blue,
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ServePageWrite()),
+                  MaterialPageRoute(builder: (context) => ServePageWrite(data)),
                 );
               },
               child: Icon(Icons.add, color: Colors.white,),
               // elevation: 5.0,
             ),
           ),
-        ],
-      ),
     );
   }
 }

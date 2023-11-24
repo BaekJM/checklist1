@@ -32,9 +32,13 @@ Widget NewsCard(Function()? onTap, QueryDocumentSnapshot doc) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    doc[Title],
-                    style: TextStyle(fontSize: 24),
+                  Container(
+                    width: 250,
+                    child: Text(
+                      doc[Title],
+                      style: TextStyle(fontSize: 24),
+                      maxLines: 1,
+                    ),
                   ),
                   Container(width: 200,height: 2,color: Color(0xFF013B5E)),
                 ],
@@ -42,17 +46,27 @@ Widget NewsCard(Function()? onTap, QueryDocumentSnapshot doc) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    doc[Point],
-                    style: TextStyle(fontSize: 14),
+                  Row(
+                    children: [
+                      Icon(Icons.room,size: 16,),
+                      Text(
+                        doc[Point],
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
                   ),
-                  Container(
-                    width: 250,
-                    child: Text(
-                      doc[content],
-                      style: TextStyle(fontSize: 14),
-                      maxLines: 1,
-                    ),
+                  Row(
+                    children: [
+                      Icon(Icons.receipt_long,size: 16,),
+                      Container(
+                        width: 250,
+                        child: Text(
+                          doc[content],
+                          style: TextStyle(fontSize: 14),
+                          maxLines: 1,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -64,7 +78,7 @@ Widget NewsCard(Function()? onTap, QueryDocumentSnapshot doc) {
             children: [
               Text(
                 doc[Name],
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 15),
               ),
               Container(
                 width: 80,
