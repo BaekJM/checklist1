@@ -43,7 +43,7 @@ class _ServePageState extends State<ServePage> {
                       .delete()
                       .then((value) {
                     Navigator.pop(context);
-                  }).catchError((error) => print('뭔가 잘못됬어 삭제를 못하잖아 이유를 찾아봐'));
+                      }).catchError((error) => print('뭔가 잘못됬어 삭제를 못하잖아 이유를 찾아봐'));
                 },
               icon: Icon(Icons.delete))
         ],
@@ -52,7 +52,7 @@ class _ServePageState extends State<ServePage> {
         children: [
           Container(
             width: double.infinity,
-            height: 290,
+            height: 320,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -88,10 +88,14 @@ class _ServePageState extends State<ServePage> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: Text(
-                              widget.doc[Title],
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 35),
+                            child: Container(
+                              width: 200,
+                              child: Text(
+                                widget.doc[Title],
+                                style:
+                                    TextStyle(color: Colors.white, fontSize: 31),
+                                maxLines: 2,
+                              ),
                             ),
                           ),
                         ],
@@ -216,13 +220,13 @@ class _ServePageState extends State<ServePage> {
                   );
                 }
                 if (snapshot.hasData) {
-                  return Column(
+                  return ListView(
                       children: snapshot.data!.docs
                           .map((note) => ServePageParch(() {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => NextPage(note)));
+                                        builder: (context) => NextPage(note,data)));
                               }, note))
                           .toList());
                 } else {
