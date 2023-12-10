@@ -28,7 +28,7 @@ Widget ServePageParch(Function()? onTap, QueryDocumentSnapshot doc) {
   return InkWell(
     onTap: onTap,
     child: Container(
-      height: 80,
+      height: 90,
       width: double.infinity,
       padding: EdgeInsets.all(8.0),
       margin: EdgeInsets.all(8.0),

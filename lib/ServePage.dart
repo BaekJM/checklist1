@@ -52,7 +52,7 @@ class _ServePageState extends State<ServePage> {
         children: [
           Container(
             width: double.infinity,
-            height: 320,
+            height: 340,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -67,9 +67,7 @@ class _ServePageState extends State<ServePage> {
             ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Stack(
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -186,21 +184,27 @@ class _ServePageState extends State<ServePage> {
                       ),
                     ],
                   ),
-                  Column(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      IconButton(
-                        iconSize: 30,
-                        icon: const Icon(
-                          Icons.edit,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {},
-                      ),
-                      Text(
-                        widget.doc[day],
-                        style: TextStyle(color: Colors.white70, fontSize: 15),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            iconSize: 30,
+                            icon: const Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {},
+                          ),
+                          Text(
+                            widget.doc[day],
+                            style: TextStyle(color: Colors.white70, fontSize: 15),
+                          ),
+                        ],
                       ),
                     ],
                   ),

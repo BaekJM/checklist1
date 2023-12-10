@@ -33,7 +33,7 @@ Widget NewsCard(Function()? onTap, QueryDocumentSnapshot doc) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 250,
+                    width: 220,
                     child: Text(
                       doc[Title],
                       style: TextStyle(fontSize: 24),
@@ -59,7 +59,7 @@ Widget NewsCard(Function()? onTap, QueryDocumentSnapshot doc) {
                     children: [
                       Icon(Icons.receipt_long,size: 16,),
                       Container(
-                        width: 250,
+                        width: 220,
                         child: Text(
                           doc[content],
                           style: TextStyle(fontSize: 14),
