@@ -48,7 +48,7 @@ class _ServePageState extends State<ServePage> {
               icon: Icon(Icons.delete))
         ],
       ),
-      body: Column(
+      body: ListView(
         children: [
           Container(
             width: double.infinity,
@@ -224,7 +224,7 @@ class _ServePageState extends State<ServePage> {
                   );
                 }
                 if (snapshot.hasData) {
-                  return ListView(
+                  return Column(
                       children: snapshot.data!.docs
                           .map((note) => ServePageParch(() {
                                 Navigator.push(

@@ -18,6 +18,7 @@ class _FirstPageState extends State<FirstPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Container(height:40,
             child: Image.asset('poto/logo3.png')
         ),
