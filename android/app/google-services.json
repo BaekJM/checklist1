@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:899432780815:android:d64a8998836b48be243f7a",
+        "mobilesdk_app_id": "1:899432780815:android:aad44d6039ef3ac7243f7a",
         "android_client_info": {
           "package_name": "com.example.checklist"
         }

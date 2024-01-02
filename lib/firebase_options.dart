@@ -45,18 +45,18 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyD1zfD8Xb9wgVsFL4NEat9mNUgSiv-TVSE',
-    appId: '1:899432780815:web:b87445234675371d243f7a',
+    appId: '1:899432780815:web:b5ca4b763e3f221e243f7a',
     messagingSenderId: '899432780815',
     projectId: 'check-list-app-d0a37',
     authDomain: 'check-list-app-d0a37.firebaseapp.com',
     databaseURL: 'https://check-list-app-d0a37-default-rtdb.firebaseio.com',
     storageBucket: 'check-list-app-d0a37.appspot.com',
-    measurementId: 'G-0CXYFHLCR6',
+    measurementId: 'G-040P0SHR5B',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBVATtXeiEtDk7LsRNuliZz2pSiilEZHK0',
-    appId: '1:899432780815:android:d64a8998836b48be243f7a',
+    appId: '1:899432780815:android:aad44d6039ef3ac7243f7a',
     messagingSenderId: '899432780815',
     projectId: 'check-list-app-d0a37',
     databaseURL: 'https://check-list-app-d0a37-default-rtdb.firebaseio.com',
@@ -65,7 +65,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCMGOu9A3hN_1G_V7LnQDBp9nGW5qn2tpQ',
-    appId: '1:899432780815:ios:36c78ee406efcc1b243f7a',
+    appId: '1:899432780815:ios:f4d56be2edda4b0b243f7a',
     messagingSenderId: '899432780815',
     projectId: 'check-list-app-d0a37',
     databaseURL: 'https://check-list-app-d0a37-default-rtdb.firebaseio.com',
@@ -75,7 +75,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCMGOu9A3hN_1G_V7LnQDBp9nGW5qn2tpQ',
-    appId: '1:899432780815:ios:fd5b75ccebf57bdd243f7a',
+    appId: '1:899432780815:ios:5537d4f7eb3a573c243f7a',
     messagingSenderId: '899432780815',
     projectId: 'check-list-app-d0a37',
     databaseURL: 'https://check-list-app-d0a37-default-rtdb.firebaseio.com',

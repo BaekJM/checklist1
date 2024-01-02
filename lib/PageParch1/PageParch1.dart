@@ -80,6 +80,7 @@ Widget NewsCard(Function()? onTap, QueryDocumentSnapshot doc) {
                 doc[Name],
                 style: TextStyle(fontSize: 15),
               ),
+              Icon(Icons.notifications_none),
               Container(
                 width: 80,
                   child: Text(

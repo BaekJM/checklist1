@@ -2,7 +2,9 @@ import 'package:checklist/PageParch1/NextPagePart.dart';
 import 'package:checklist/PageParch1/PageParch1.dart';
 import 'package:checklist/PageParch1/ServePageParch.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 ///Read
 
@@ -23,6 +25,13 @@ class _ServePageState extends State<ServePage> {
   String Oner = "Oner";
 
   String date = DateTime.now().toString();
+
+  bool _visibility = false;
+  double _PageSize = 200;
+  double _PageEndSize = 30;
+  Icon _PageIcon = Icon(Icons.arrow_drop_down,size: 35,);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +61,7 @@ class _ServePageState extends State<ServePage> {
         children: [
           Container(
             width: double.infinity,
-            height: 340,
+            height: _PageSize,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -61,7 +70,6 @@ class _ServePageState extends State<ServePage> {
                 ],
               ),
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40.0),
                 bottomRight: Radius.circular(40.0),
               ),
             ),
@@ -104,9 +112,6 @@ class _ServePageState extends State<ServePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              height: 10,
-                            ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -131,54 +136,58 @@ class _ServePageState extends State<ServePage> {
                             SizedBox(
                               height: 10,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('【場所】',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 13)),
-                                Container(
-                                  width: 100,
-                                  height: 1,
-                                  color: Colors.white24,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(
-                                    widget.doc[Point],
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 23),
+                            Visibility(
+                              visible: _visibility,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('【場所】',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 13)),
+                                  Container(
+                                    width: 100,
+                                    height: 1,
+                                    color: Colors.white24,
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      widget.doc[Point],
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 23),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             SizedBox(
                               height: 10,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('【担当者】',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 13)),
-                                Container(
-                                  width: 100,
-                                  height: 1,
-                                  color: Colors.white24,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(
-                                    widget.doc[Name],
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 23),
+                            Visibility(
+                              visible: _visibility,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('【担当者】',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 13)),
+                                  Container(
+                                    width: 100,
+                                    height: 1,
+                                    color: Colors.white24,
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      widget.doc[Name],
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 23),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                              height: 20,
-                            )
+                            SizedBox(height: _PageEndSize ,)
                           ],
                         ),
                       ),
@@ -200,9 +209,26 @@ class _ServePageState extends State<ServePage> {
                             ),
                             onPressed: () {},
                           ),
-                          Text(
-                            widget.doc[day],
-                            style: TextStyle(color: Colors.white70, fontSize: 15),
+                          Stack(
+                            children: [
+                              Container(
+                                width: 100,
+                                child: Text(
+                                  widget.doc[day],
+                                  style: TextStyle(color: Colors.white70, fontSize: 15,),maxLines: 1,
+                                ),
+                              ),
+                              Container(
+                                width: 100,
+                                child: Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: IconButton(onPressed: (){
+                                      setState(_PageToggle);
+                                  }, icon:_PageIcon,color: Colors.white70,
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ],
                       ),
@@ -255,5 +281,22 @@ class _ServePageState extends State<ServePage> {
             ),
           ),
     );
+  }
+  void _PageToggle(){
+    _visibility = !_visibility;
+    if(_visibility == true ){
+      setState(() {
+        _PageIcon = Icon(Icons.arrow_drop_up,size: 35,);
+        _PageSize = 340;
+        _PageEndSize = 50;
+      });
+    }
+    if(_visibility == false){
+      setState(() {
+        _PageIcon = Icon(Icons.arrow_drop_down,size: 35,);
+        _PageSize = 200;
+        _PageEndSize = 20;
+      });
+    }
   }
 }

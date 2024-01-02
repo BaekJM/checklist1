@@ -11,6 +11,7 @@ Widget ServePageParch(Function()? onTap, QueryDocumentSnapshot doc) {
   String ColorR = "ColorR";
   String ColorX = "ColorX";
   String ColorT = "ColorT";
+  String ColorB = "ColorB";
 
 
   var PopString = doc[ColorR];
@@ -25,12 +26,16 @@ Widget ServePageParch(Function()? onTap, QueryDocumentSnapshot doc) {
   final ColorTbuffer = StringBuffer();
   ColorTbuffer.write(ColorTRedString.replaceFirst('0x', ''));
 
+  var ColorBRedString = doc[ColorB];
+  final ColorBbuffer = StringBuffer();
+  ColorBbuffer.write(ColorBRedString.replaceFirst('0x', ''));
+
   return InkWell(
     onTap: onTap,
     child: Container(
-      height: 90,
+      height: 70,
       width: double.infinity,
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.only(left: 8.0,right: 8.0),
       margin: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
           color: Color(int.parse(PopRedbuffer.toString(), radix: 16)),
@@ -48,11 +53,11 @@ Widget ServePageParch(Function()? onTap, QueryDocumentSnapshot doc) {
                 children: [
                   Text(
                     doc[Title],
-                    style: TextStyle(fontSize: 24,
+                    style: TextStyle(fontSize: 20,
                       color: Color(int.parse(ColorTbuffer.toString(), radix: 16))
                     ),
                   ),
-                  Container(width: 200, height: 2, color: Color(0xFF013B5E)),
+                  Container(width: 200, height: 2, color: Color(int.parse(ColorBbuffer.toString(),radix: 16))),
                 ],
               ),
               Column(
@@ -77,7 +82,7 @@ Widget ServePageParch(Function()? onTap, QueryDocumentSnapshot doc) {
             children: [
               Text(
                 doc[_Point],
-                style: TextStyle(fontSize: 20,color: Color(int.parse(ColorTbuffer.toString(), radix: 16))),
+                style: TextStyle(fontSize: 13,color: Color(int.parse(ColorTbuffer.toString(), radix: 16))),
               ),
               Container(
                 width: 80,
@@ -128,7 +133,8 @@ class _ServePageWriteState extends State<ServePageWrite> {
 
   String ColorR = "ff223344";
   String ColorX = "ffffffff";
-  String ColorT = "0xff000000";
+  String ColorT = "ff000000";
+  String ColorB = "ff000000";
 
   @override
   Widget build(BuildContext context) {
@@ -178,18 +184,22 @@ class _ServePageWriteState extends State<ServePageWrite> {
                             ColorR = "ffffffff";
                             ColorX = "ffffffff";
                             ColorT = "ff000000";
+                            ColorB = "ff000000";
                           } else if (_Point == '重要') {
-                            ColorR = "fff44336";
-                            ColorX = "fff44336";
+                            ColorR = "ffBB4642";
+                            ColorX = "ffBB4642";
                             ColorT = "ffffffff";
+                            ColorB = "ffffffff";
                           } else if (_Point == '不具合') {
-                            ColorR = "fff44336";
+                            ColorR = "ffBB4642";
                             ColorX = "ffffffff";
                             ColorT = "ff000000";
+                            ColorB = "ffBB4642";
                           } else if (_Point == '変更') {
-                            ColorR = "ef0078ff";
+                            ColorR = "FFE2CD26";
                             ColorX = "ffffffff";
                             ColorT = "ff000000";
+                            ColorB = "FFE2CD26";
                           }
                         });
                       },
@@ -252,6 +262,7 @@ class _ServePageWriteState extends State<ServePageWrite> {
             "ColorR": ColorR,
             "ColorX": ColorX,
             "ColorT": ColorT,
+            "ColorB": ColorB,
           }).then((value) {
             Navigator.pop(context);
           }).catchError((error) => print('뭔가 잘못됬어 찾아봐'));
